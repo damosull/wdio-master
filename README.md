@@ -10,7 +10,7 @@ This is my main repository for WebDriverIO. It is based on Rahul's tutorials. So
 
 # Tips:
 
-Different ways to use Parent -> Child:
-• Get the 1st child using a CSS selector - tr th:nth-child(1)
-• Get the 1st child using XPath - //tr/th[1]
-You can enter a selector in the browser console. If it’s valid, the element will get printed to the console: document.querySelector('tr th:nth-child(1)');
+- Different ways to use Parent -> Child:
+  - Get the 1st child using a CSS selector - tr th:nth-child(1)
+  - Get the 1st child using XPath - //tr/th[1]
+- You can enter a selector in the browser console. If it’s valid, the element will get printed to the console: document.querySelector('tr th:nth-child(1)');
