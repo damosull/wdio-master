@@ -1,9 +1,12 @@
-describe("UI Controls", async () => {
-  beforeEach(async () => {
-    await browser.url("https://rahulshettyacademy.com/AutomationPractice/");
-  });
+// How to scroll to an invisible element, & how to mouse over an element
 
+// .scrollIntoView() - scroll this element into view
+// .moveTo() - hover over this element
+// '=Top' - locate the element with text 'Top'
+
+describe("Scroll to & hover over", async () => {
   it("Section 7 - Scroll to & hover over", async () => {
+    await browser.url("https://rahulshettyacademy.com/AutomationPractice/");
     await $("#mousehover").scrollIntoView();
     await browser.pause(3000);
     await $("#mousehover").moveTo(); // 'hover over'

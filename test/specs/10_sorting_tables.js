@@ -1,5 +1,9 @@
 import { expect } from "chai";
 
+// Section 7 - Sorting Web Tables
+
+// You will likely need to test sorting web tables based on alphabetical order, price, number, etc.
+
 describe("JS Alerts Pop Up", () => {
   it("Section 7 - Sorting Web HTML Tables & verifying new order based on names", async () => {
     await browser.url(

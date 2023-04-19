@@ -1,11 +1,13 @@
-import { expect } from "chai";
+// The assertions we’ve been using up to this point (expect, toHaveUrlContaining(), toHaveTextContaining(), etc.) are WebDriverIO assertions.
+// If you want to do assertions like comparing strings, you’ll need to use chai: https://www.chaijs.com/api/assert/
+// Install chai using `npm i chai`
+// The problem now is how does your framework know if `expect` is related to WDIO or Chai, as they both have a function with that name.
+// To get around this conflict, Rahul used `require` to get around this, but we weren't able to, & we need to use `import` so I created a new file.
+// How to impoert  `expect` from chai in your node_modules:
+// `import {expect} from ‘chai`
+// Now we can say ` await expect(value).to.equal(‘stud’)`
 
-// README: The reason we are moving this to a different file is so that we can use the Chai assertions
-// When using chai assertions, we use `expect` from the chai library.
-// In the tests up to now, we have been using `expect` from the WDIO library.
-// If we have both in the same test suite, WDIO doesn't know where to get `expect` from
-// Rahul used `require` to get around this, but we don't have that, so we need to use `import`
-// Long term, we'll probably need to figure out how we can have both in the same file
+import { expect } from "chai";
 
 describe("UI Controls", async () => {
   beforeEach(async () => {
@@ -15,7 +17,7 @@ describe("UI Controls", async () => {
     await password.setValue("learning");
   });
 
-  it("Section 6 - Asserting Select dropdowns using Chai", async () => {
+  it("Asserting Select dropdowns using Chai", async () => {
     const rdoButtons = $$(".customradio");
     const rdoUser = rdoButtons[1]; // 2nd item in the array
     await rdoUser.$("span").click();
