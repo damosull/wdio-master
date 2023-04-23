@@ -17,9 +17,10 @@ describe("eCommerce App", async () => {
 
     // 2. Loop through all products & get the link text values
     // wait until checkout button is displayed:
-    await $("*=Checkout").waitForExist(); // link text
+    const link = await $("*=Checkout"); // link text
     // $('=Checkout') - exact text match
     // $('*=Checkout') - partial text match
+    await link.waitForExist();
 
     const cards = await $$('div[class="card h-100"]');
     // If there's one class in your selector, you can use '.className'
@@ -35,5 +36,8 @@ describe("eCommerce App", async () => {
         await browser.pause(15000);
       }
     }
+
+    await link.click(); // Click the checkout button to bring you to the next page
+    await browser.pause(15000);
   });
 });
