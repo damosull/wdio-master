@@ -22,7 +22,7 @@ export const config = {
   // then the current working directory is where your `package.json` resides, so `wdio`
   // will be called from there.
   //
-  specs: ["./test/specs/**/15_e2e_p1.js"],
+  specs: ["./test/specs/**/16_e2e_p2.js"],
   // specs: ["./test/specs/**/*.js"],
 
   // Patterns to exclude.
