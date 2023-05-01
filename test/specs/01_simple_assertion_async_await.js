@@ -63,7 +63,7 @@ describe("First Tests", async () => {
       async () => (await $("#signInBtn").getAttribute("value")) === "Sign In",
       {
         timeout: 5000,
-        timeoutMsg: "damo",
+        timeoutMsg: "Error message is not showing up",
       }
     );
 
