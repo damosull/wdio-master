@@ -21,10 +21,10 @@
 // After creating the page object file, now it's time to use it to login:
 
 // 1. Import the page object:
-import LoginPage from "../specs/page-objects/loginPage.js";
-import ShopPage from "../specs/page-objects/shopPage.js";
-import ReviewPage from "../specs/page-objects/reviewPage.js";
-import DeliveryPage from "../specs/page-objects/deliverPage.js";
+import LoginPage from "../page-objects/loginPage.js";
+import ShopPage from "../page-objects/shopPage.js";
+import ReviewPage from "../page-objects/reviewPage.js";
+import DeliveryPage from "../page-objects/deliverPage.js";
 import { expect } from "chai";
 
 describe("E2E Framework", async () => {
@@ -51,7 +51,7 @@ describe("E2E Framework", async () => {
   // Next, we're going to implement POM on the eCommerce test
   // Create a shop page POM & copy test from `16_e2e_test_p2.js` here & then do the POM refactoring:
 
-  it.only("eCommerce", async () => {
+  it("eCommerce", async () => {
     const products = ["iphone X", "Blackberry"];
 
     // 1. Sign in with POM:

@@ -7,7 +7,7 @@
     "@wdio/mocha-framework": "^8.6.8",
     "@wdio/selenium-standalone-service": "^8.6.8",
     "@wdio/spec-reporter": "^8.6.8",
-    "chromedriver": "^111.0.0",
+    "chromedriver": "^112.0.1",
     "wdio-chromedriver-service": "^8.1.1"
   },
   "scripts": {
