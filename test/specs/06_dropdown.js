@@ -4,7 +4,7 @@
 // We assign the options/elements to an array, then loop through the array items.
 // If one of the array items matches the text we specify, click that item.
 
-describe("Dynamic dropdowns", async () => {
+describe("Dynamic dropdowns Smoke", async () => {
   it("Section 7 - Dynamic dropdowns", async () => {
     await browser.url("https://rahulshettyacademy.com/AutomationPractice/");
     await $("#autocomplete").setValue("Ind");

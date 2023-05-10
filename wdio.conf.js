@@ -22,8 +22,8 @@ export const config = {
   // then the current working directory is where your `package.json` resides, so `wdio`
   // will be called from there.
   //
-  specs: ["./test/specs/**/19_data_driven_p2.js"],
-  // specs: ["./test/specs/**/*.js"],
+  // specs: ["./test/specs/**/19_data_driven_p2.js"],
+  specs: ["./test/specs/**/*.js"],
 
   // Patterns to exclude.
   exclude: [
@@ -64,6 +64,11 @@ export const config = {
       // it is possible to configure which logTypes to include/exclude.
       // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
       // excludeDriverLogs: ['bugreport', 'server'],
+      "goog:chromeOptions": {
+        // to run chrome headless the following flags are required
+        // (see https://developers.google.com/web/updates/2017/04/headless-chrome)
+        args: ["--headless", "--disable-gpu"],
+      },
     },
   ],
   //

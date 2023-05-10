@@ -5,7 +5,7 @@ import { expect } from "chai";
 // You will likely need to test sorting web tables based on alphabetical order, price, number, etc.
 
 describe("JS Alerts Pop Up", () => {
-  it("Section 7 - Sorting Web HTML Tables & verifying new order based on names", async () => {
+  it("Section 7 - Sorting Web HTML Tables & verifying new order based on names Smoke", async () => {
     await browser.url(
       "https://rahulshettyacademy.com/seleniumPractise/#/offers"
     );

@@ -1,0 +1,11 @@
+--- Running selected tests using Mocha's Grep option  --- 
+
+You might want to run only a specific set of tests (i.e. Smoke, Regression).
+You can use Grep to specific which test cases (it blocks to run)
+
+Steps:
+1. Add the keyword you want to use within the name of each it block you want to run (i.e. Smoke)
+2. In our config, we've specified to run all tests `..../**/*/js`. When we run with Grep later, all test files will be searched for that keyword.
+3. Run command - `npx wdio run wdio.conf.js --mochaOpts.grep Smoke`
+  - This will run all tests with 'Smoke' in the test case name, & skip the others.
+  - You can also add it to a package.json script - `"smoke-tests": "wdio run ./wdio.conf.js --mochaOpts.grep Smoke"`

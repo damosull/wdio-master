@@ -14,7 +14,7 @@
 import { expect } from "chai";
 
 describe("eCommerce App", async () => {
-  it("E2E Test", async () => {
+  it("Smoke E2E Test", async () => {
     const products = ["iphone X", "Blackberry"];
 
     // 1. Sign in:
