@@ -22,7 +22,7 @@ Step 3. To verify the reporting is working as expected up to this point, run `np
 
 Step 4. Next, we need to generate a HTML report based on these XMLs.
 
-Step 5. Install allure to run commands later on: `npm install allure-commandline --D`
+Step 5. Install allure to run commands later on: `npm install allure-commandline -D`
 
 Step 6. Add this script to package.json:
   "report": "allure generate allure-results --clean && allure open"

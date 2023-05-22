@@ -145,7 +145,10 @@ export const config = {
   // Test reporter for stdout.
   // The only one supported by default is 'dot'
   // see also: https://webdriver.io/docs/dot-reporter
-  reporters: ["spec"],
+  reporters: [['allure', {
+    outputDir: 'allure-results', // specify the folder where the XML files will be published
+    disableWebdriverScreenshotsReporting: false, // this re-enables screenshots
+}]],
 
   //
   // Options to be passed to Mocha.
@@ -248,8 +251,11 @@ export const config = {
    * @param {Boolean} result.passed    true if test has passed, otherwise false
    * @param {Object}  result.retries   informations to spec related retries, e.g. `{ attempts: 0, limit: 0 }`
    */
-  // afterTest: function(test, context, { error, result, duration, passed, retries }) {
-  // },
+  afterTest: async function(test, context, { error, result, duration, passed, retries }) {
+    if (error) {
+      await browser.takeScreenshot();
+    }
+  },
 
   /**
    * Hook that gets executed after the suite has ended
