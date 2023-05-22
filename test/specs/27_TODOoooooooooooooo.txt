@@ -1,0 +1,28 @@
+todo: NEED TO TIDY UP THESE NOTES & MAYBE DO AN EXAMPLE TO VALIDATE IT WORKS:
+
+
+
+
+Package.json Scripts
+
+You can define a script to run a command
+
+Why do we need this?
+
+Scenario 1:You want to run a particular test suite, so you run `npx wdio run wdio.conf.js -- suite creditCard` in the command line
+Scenario 2: You want to specify a different configuration file, so you run `npx wdio run wdio.uat.conf.js`
+
+It's difficult to remember all these parameters, so we can store all these commands/parameters in scripts, which we can then call
+
+Examples:
+Package.json:
+"scripts": {
+	"creditCardTests": "npx wdio run wdio.conf.js -- suite creditCard",
+	"uat": "npx wdio run wdio.uat.conf.js",
+}
+
+
+Run commands:
+`npm run creditCardTests`
+`npm run uat`
+

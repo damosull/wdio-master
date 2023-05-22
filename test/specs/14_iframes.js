@@ -13,7 +13,7 @@
 
 describe("iFrames", async () => {
   it("Section 8 - iFrames", async () => {
-    await browser.url("https://rahulshettyacademy.com/AutomationPractice/");
+    await browser.url("/AutomationPractice/");
     await $("#mousehover").scrollIntoView();
     console.log("# links on the original page: " + (await $$("a").length)); // 27 links in the 1st page
     await browser.pause(5000);

@@ -20,7 +20,7 @@
 
 describe("First Tests", async () => {
   it("WDIO Assertions & Hard-Coded Waits", async () => {
-    await browser.url("https://rahulshettyacademy.com/loginpagePractise/");
+    await browser.url("/loginpagePractise/");
 
     // Now we're going to show you some examples of WDIO assertions
     // And as mentioned earlier, we need to add `await` & `async` to our code to make sure our promises get resolved before moving onto the next line of code
@@ -47,7 +47,7 @@ describe("First Tests", async () => {
   });
 
   it("Login Failure - Wait Until button text matches", async () => {
-    await browser.url("https://rahulshettyacademy.com/loginpagePractise/");
+    await browser.url("/loginpagePractise/");
     console.log(await browser.getTitle());
 
     await expect(browser).toHaveTitleContaining("Rahul Shetty Academy");
@@ -71,14 +71,14 @@ describe("First Tests", async () => {
   });
 
   it("Assertions", async () => {
-    await browser.url("https://rahulshettyacademy.com/loginpagePractise/");
+    await browser.url("/loginpagePractise/");
     await expect($("p")).toHaveTextContaining(
       "username is rahulshettyacademy and Password is learning"
     );
   });
 
   it("Login Success", async () => {
-    await browser.url("https://rahulshettyacademy.com/loginpagePractise/");
+    await browser.url("/loginpagePractise/");
     await $("#username").setValue("rahulshettyacademy");
 
     const password = $("//input[@type='password']");

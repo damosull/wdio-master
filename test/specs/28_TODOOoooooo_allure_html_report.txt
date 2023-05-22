@@ -1,0 +1,82 @@
+--- Generating HTML reports using the Allure package ---
+
+NB Note: I did this with whatever versions I have (node, java, etc.) & it worked. Jackson tried the same & was getting a RunnerClass error
+
+WDIO Documentation: https://webdriver.io/docs/allure-reporter/
+
+At a high level, we need to do (1) Generate XML files based on the test results, (2) Generate HTML test report based on these XML files, so we will do these 1 at a time.
+
+Step 1. Installation `npm install @wdio/allure-reporter --save-dev`
+
+Step 2. Configure reporter to specify report directory (for XML files):
+- In `wdio.conf.js`, search for 'reporters' & update it to match this:
+```
+reporters: [['allure', {
+        outputDir: 'allure-results', // specify the folder where the XML files will be published
+        disableWebdriverScreenshotsReporting: false, // this re-enables screenshots
+    }]],
+```
+
+Step 3. To verify the reporting is working as expected up to this point, run `npm run wdio`.
+- If it's working up to this point, several XML files should now exist in an `allure-results` folder.
+
+Step 4. Next, we need to generate a HTML report based on these XMLs.
+
+Step 5. Install allure to run commands later on: `npm install allure-commandline --D`
+
+Step 6. Add this script to package.json:
+  "report": "allure generate allure-results --clean && allure open"
+  // --clean is required when the allure-results folder already exists (i.e. after you run this test the first time)
+
+Step 7. Run the tests as usual to generate the `allure-results` folder.
+
+Step 8. `npm run report` should now generate the HTML in the `allure-report` folder & it should automatically open in your browser.
+
+Step 9. The problem now is that if you change test names, etc. & run these commands, the 'old' test names, etc. show up in the HTML report, they're not being deleted.
+
+Step 10. To fix this, do the following:
+- `npm i rimraf -D` to delete the previous test results
+- Update package.json scripts:
+	"pre-test": "rimraf allure-results && rimraf allure-report && rimraf test-screenshots && rimraf wdio-logs",
+  "wdio": "wdio run ./wdio.conf.js",
+  "report-generate": "allure generate allure-results --clean",
+  "report-open": "allure open"
+
+Step 11. Now, the test results are cleared before each tests (if they exist), then generated after each test run
+- You would need to run these in this order: (1) pre-test, (2) wdio, (3) report-generate, (4) report-open
+
+Step 12. This is a bit messy, so we can tidy it up a bit.
+
+Step 13. First, rename `pre-test` to `pretest`. By default in node projects, this command is ran if you specify it.
+
+Step 14. Next, create a `test` command that will run the test: "test": "wdio run ./wdio.conf.js",
+
+Step 15. Create `posttest`, like pretest this will run if you specify it: "posttest": "allure generate allure-results --clean && allure open"
+
+Step 16. This works fine if all tests pass. The problem is if a test fails, the remaining steps aren't executed.
+
+Step 17. To fix this, we do `npm i -D npm-run-all` which will run all scripts regardless of the state of the others.
+
+Step 18. Here is the consolidated solution:
+	"scripts": {
+	    "pretest": "rimraf allure-results && rimraf allure-report && rimraf test-screenshots && rimraf wdio-logs",
+	    "test": "npm-run-all wdio report --continue-on-error",
+	    "wdio": "wdio run ./wdio.conf.js",
+	    "report": "allure generate allure-results --clean && allure open",
+  }
+
+Step 19. Now, the report will be generated regardless of the test results.
+
+Step 20. Next, we need to add screenshots to the report:
+- Add the below code in the `afterTest` hook in the conf file:
+	if (error) {
+    await browser.takeScreenshot();
+  }
+- Allure monitors the screenshot method, so once there is a screenshot taken, allure attaches it to the test results as we have set the disableScreenshtoRepoeting to 'false'
+
+Step 21. After running the test `npm test`, if you search for 'screenshot' in the HTML report, you'll see the failure screenshot
+
+Step 22. As you can see, there's a lot of information here that isn't useful to us, it's more about requests WDIO made, etc.
+- So to get rid of that, we can add the following to our allure reporter configuration like so:
+  disableWebdriverStepsReporting: true,
+- Now, if we run again we only see what's relevant to us

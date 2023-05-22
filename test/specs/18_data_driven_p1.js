@@ -24,7 +24,7 @@ describe("Data Driven - Parameterise test cases using Mocha Framework & JSON fil
 
   credentials.forEach(({ username, password }) => {
     it("Login Failure - Data Driven - Parameterise test cases using Mocha Framework & JSON files", async () => {
-      await browser.url("https://rahulshettyacademy.com/loginpagePractise/");
+      await browser.url("/loginpagePractise/");
 
       // 4. Replace the hard-coded values with the values that were passed in from the JSON file. Now run the test & the test runs twice based on the JSON object
       await LoginPage.login(username, password);

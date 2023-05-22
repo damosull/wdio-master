@@ -6,6 +6,11 @@ export const config = {
   // WebdriverIO supports running e2e tests as well as unit and component tests.
   runner: "local",
 
+  suites: {
+    debitCard: ['test/specs/03_pop_up_modal.js', 'test/specs/06_dropdown.js', 'test/specs/13_multiple_windows.js'],
+    creditCard: ['test/specs/10_sorting_tables.js']
+  },
+
   //
   // ==================
   // Specify Test Files
@@ -102,7 +107,7 @@ export const config = {
   // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
   // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
   // gets prepended directly.
-  baseUrl: "http://localhost",
+  baseUrl: "https://rahulshettyacademy.com",
   //
   // Default timeout for all waitFor* commands.
   waitforTimeout: 10000,

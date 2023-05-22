@@ -1,0 +1,36 @@
+Importance of Bail & BaseUrl optionsi nthe config file
+
+in config file:
+
+'bail' option
+
+say you have 40 test cases & first 12 failed.
+looks like there's somethign up w. your app
+could be anything (deployment issue, etc.
+as there's this many failures already, no point waiting until all tests are complete
+
+how to stop execution in this case:
+	use the bail parameter
+if you set it to 3, when 3 failures are encountered in the test run, the test will stop.
+
+So if you have 20 tests, & you set bail = 3, test execution will stop after if you hit 3 failures.
+
+Me: I set it to 3, & there were actually 4 failures. Not sure why it didn't stop for me after 3
+
+
+
+--- BaseUrl --- 
+
+Assume this is Prod URL
+but you want to run your tests in lower level env's
+so depending on which env you're testing, the url will be different
+if you hardcode the url in each test, you'll need to update this everywhere each time you run in another env.
+instead, you can set this in your config file:
+
+Required Changes:
+1. In `wdio.conf.js`, update the 'baseUrl' value with your URL:
+		`baseUrl: "https://rahulshettyacademy.com",`
+2. Update your tests where you're navigating to the page like so:
+		`await browser.url("/loginpagePractise/");`
+		This will pick up the baseUrl from the config file & append the above onto it before navigating.
+

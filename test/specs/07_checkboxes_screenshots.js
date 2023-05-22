@@ -10,7 +10,7 @@
 
 describe("Checkboxes & Screenshots", async () => {
   it("Section 7 - Checkboxes & Screenshots", async () => {
-    await browser.url("https://rahulshettyacademy.com/AutomationPractice/");
+    await browser.url("/AutomationPractice/");
     const element = await $$("input[type='checkbox']");
     await element[1].click();
     console.log(await element[1].isSelected());

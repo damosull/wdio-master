@@ -6,7 +6,7 @@
 
 describe("Scroll to & hover over", async () => {
   it("Section 7 - Scroll to & hover over", async () => {
-    await browser.url("https://rahulshettyacademy.com/AutomationPractice/");
+    await browser.url("/AutomationPractice/");
     await $("#mousehover").scrollIntoView();
     await browser.pause(3000);
     await $("#mousehover").moveTo(); // 'hover over'

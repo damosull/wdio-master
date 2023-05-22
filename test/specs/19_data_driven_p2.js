@@ -23,7 +23,7 @@ describe("Data Driven - Parameterise test cases using Mocha Framework & JSON fil
       // const products = ["iphone X", "Blackberry"];
 
       // Sign in with POM
-      await browser.url("https://rahulshettyacademy.com/loginpagePractise/");
+      await browser.url("/loginpagePractise/");
       await LoginPage.login("rahulshettyacademy", "learning");
       await ShopPage.checkout.waitForExist();
       await ShopPage.addProductToCart(products);

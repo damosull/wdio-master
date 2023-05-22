@@ -4,7 +4,7 @@
 
 describe("Radio Buttons", async () => {
   beforeEach(async () => {
-    await browser.url("https://rahulshettyacademy.com/loginpagePractise/");
+    await browser.url("/loginpagePractise/");
     await $("#username").setValue("rahulshettyacademy");
     const password = $("//input[@type='password']");
     await password.setValue("learning");

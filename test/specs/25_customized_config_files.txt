@@ -1,0 +1,49 @@
+--- Building Customized Config Files for Test Execution ---
+
+The default config file `wdio.conf.js` is created for us when we create our project. But, you can have several configuration files.
+
+Q. Why would you want several configuration files?
+
+Most development goes through several environments like QA -> UAT -> Prod, & each environment likely has different configurations.
+
+Examples of why you'd want a different config file for different environments:
+- baseUrl: You likely have a different baseUrl for QA, UAT, etc.
+- waitforTimeout: QA env. might be a bit slower than UAT (maybe it has more traffic / people testing). It might take 15 seconds in QA vs. 10 in UAT
+
+Take the above example, if you wanted to run your tests in UAT, you'd have to update your wdio.conf.js file & update such values.
+What if you want to run your test in UAT? At the moment, you would have to update your wdio.conf.js file whenever you want to change the URL
+
+You probably don't want to do this each time, so you can create a UAT config file where you specify whatever you like
+
+Q. What if I only want to change some values & re-use most of what's in the original config file?
+
+In your new config file, you can inherit from the `wdio.conf.js` file, & then override what you like.
+
+Q. How do we do that?
+
+We can merge both the parent config file & your new config file, then add the changes.
+
+Steps:
+1. Create `wdio.uat.conf.js` in the root of your project
+2. Here's what the new file would look like:
+
+```
+const merge = require('deepmerge') // allows us to merge objects
+const wdioConf = require('./wdio.conf.js')// import the parent config file
+
+// We'll now get the parent config, override it with some new values, & export the config object again (like we did in the original conf file).
+// 1st argument: the `config` object in the parent file, so we get all the details from the parent config file
+// 2nd argument: the new object, which will specify the new values we're overriding with
+exports.config = merge(wdioConf.config, {
+baseUrl: 'https://myUatUrl.com',
+waitforTimeout: 5000,
+mochaOpts: {
+   ui: 'bdd',
+   timeout: 60000,
+   grep: 'sanity', // this will only run tests that hvae 'sanity' in the test case name
+   }
+}) 
+
+```
+
+3. Now when you run in UAT, you can specify this file using `npx run wdio.uat.conf.js`

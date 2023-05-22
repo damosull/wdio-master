@@ -14,7 +14,7 @@
 
 describe("Multiple Windows", async () => {
   it("Section 8 - Multiple Windows", async () => {
-    await browser.url("https://rahulshettyacademy.com/loginpagePractise/");
+    await browser.url("/loginpagePractise/");
     await browser.pause(6000);
     await $(".blinkingText").click();
     const handles = await browser.getWindowHandles(); // 2 windows now because you've opened a new tab
@@ -45,7 +45,7 @@ describe("Multiple Windows", async () => {
   // If the automation opens the new window/tab, the focus automatically switches to the new window, you don't need to switch. This becomes the parent window.
 
   it("Section 8 - Difference between SwitchWindow & NewWindow methods", async () => {
-    await browser.url("https://rahulshettyacademy.com/loginpagePractise/");
+    await browser.url("/loginpagePractise/");
     await browser.pause(6000);
 
     await browser.newWindow("https://www.google.com"); // we're going to use .newWindow() to open a new tab/window for us
@@ -55,7 +55,7 @@ describe("Multiple Windows", async () => {
     // Now that we're in the new window. Say we want to switch back to the original window/tab, we use `.switchWindow()` instead of `.switchToWindow()`
     // Just pass in the original URL:
     await browser.switchWindow(
-      "https://rahulshettyacademy.com/loginpagePractise/"
+      "/loginpagePractise/"
     );
 
     //Note the difference between `.switchToWindow()` & `.switchWindow()`:

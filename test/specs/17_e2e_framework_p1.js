@@ -29,7 +29,7 @@ import { expect } from "chai";
 
 describe("E2E Framework", async () => {
   it("Login Test", async () => {
-    await browser.url("https://rahulshettyacademy.com/loginpagePractise/");
+    await browser.url("/loginpagePractise/");
 
     // 2. Call the login() method you created in the page object & pass the user/password you want to use:
     await LoginPage.login("rahulshettyacademy", "learning1234");
@@ -55,7 +55,7 @@ describe("E2E Framework", async () => {
     const products = ["iphone X", "Blackberry"];
 
     // 1. Sign in with POM:
-    await browser.url("https://rahulshettyacademy.com/loginpagePractise/");
+    await browser.url("/loginpagePractise/");
     await LoginPage.login("rahulshettyacademy", "learning");
     await ShopPage.checkout.waitForExist();
     await ShopPage.addProductToCart(products);

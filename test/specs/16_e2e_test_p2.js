@@ -17,8 +17,10 @@ describe("eCommerce App", async () => {
   it("Smoke E2E Test", async () => {
     const products = ["iphone X", "Blackberry"];
 
+    (await $('#inpu-g')).setValue('02090')
+
     // 1. Sign in:
-    await browser.url("https://rahulshettyacademy.com/loginpagePractise/");
+    await browser.url("/loginpagePractise/");
     await $("#username").setValue("rahulshettyacademy");
     const password = $("//input[@type='password']");
     await password.setValue("learning");

@@ -12,7 +12,8 @@
   },
   "scripts": {
     "wdio": "wdio run ./wdio.conf.js",
-    "smoke-tests": "wdio run ./wdio.conf.js --mochaOpts.grep Smoke"
+    "smoke-tests": "wdio run ./wdio.conf.js --mochaOpts.grep Smoke",
+    "suite": "wdio run ./wdio.conf.js --suite creditCard"
   },
   "dependencies": {
     "chai": "^4.3.7"

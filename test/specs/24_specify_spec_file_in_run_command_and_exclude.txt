@@ -1,0 +1,14 @@
+
+`Specifying tests during runtime`
+
+Up to now, we've been using the specs array in the config file to specify which specs to run.
+With the general command `npx wdio run wdio.conf.js`, whatever's specified in the specs array will run
+
+What happens if I want to specify a certain set of tests, but I don't want to update the config file?
+Instead of updating the specs array, if you want to quickly specify a test to run during runtime,
+we can override it via the command line: `npx wdio run wdio.conf.js --spec test/specs/06_dropdown.js`
+You can add multiple specs, seperating them with a comma.
+
+`Exclude`
+In the config file, you can pass the relative paths to any tests you want to exclude from your test run.
+This is useful if you know there's any issue with a certain part of the app, & you don't want to see any known failures 

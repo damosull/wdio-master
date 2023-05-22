@@ -1,7 +1,7 @@
 describe("Filter table values based on Search input", async () => {
   it("Section 7 - Filter table values based on Search input", async () => {
     await browser.url(
-      "https://rahulshettyacademy.com/seleniumPractise/#/offers"
+      "/seleniumPractise/#/offers"
     );
     await $('input[type="search"]').setValue("tomato");
     const vegLocators = await $$("tr td:nth-child(1)");

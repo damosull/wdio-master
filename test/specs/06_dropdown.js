@@ -6,7 +6,7 @@
 
 describe("Dynamic dropdowns Smoke", async () => {
   it("Section 7 - Dynamic dropdowns", async () => {
-    await browser.url("https://rahulshettyacademy.com/AutomationPractice/");
+    await browser.url("/AutomationPractice/");
     await $("#autocomplete").setValue("Ind");
     await browser.pause(3000);
     let items = await $$("[class='ui-menu-item'] div");

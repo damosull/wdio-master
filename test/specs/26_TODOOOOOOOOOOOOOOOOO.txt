@@ -1,0 +1,27 @@
+todo: NEED TO TIDY UP THESE NOTES & MAYBE DO AN EXAMPLE TO VALIDATE IT WORKS:
+
+
+How to apply Retry Mechanism for Flaky Tests with WDIO Conf
+
+Flaky test = inconsistent results
+
+For these kinds of tests, we can add retries if there's a high chance the test will pass the next time.
+
+Google 'retry wdio'. In the docs serach for 'Rerun suites in Mocha'
+
+The only code you need to add is:
+`this.retries(4) // retry up to 4 times
+
+Global level: Inside the describe(),
+
+At the it() level: retry this test up to 4 times
+
+MY QUESTION: If you specify retries at the describe() level, will it re-run ALL test cases, even those that passed?
+
+Note: If you want to use retries, you need to use an unfound function [function(){}] instead of fat arrow [() => {}]. The reasoning is in the Mocha docs, but won't go into it here, we just need to know that you need to do it.
+
+Look in the logs to see that it's being run multiple times
+If the test failed for all retries, you should see Expected vs Received values for the number of times you re-ran the test.
+If the test passed the 2nd time, you should only see that it ran twice
+
+

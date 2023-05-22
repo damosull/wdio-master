@@ -1,0 +1,26 @@
+
+CONTROLLING TEST EXECUTION VIA COMMAND LINE PARAMETERS
+
+You can create test suites in the framework & control execution from command line parameters
+
+Say you only want to run 2 files.
+
+We've shown how you can use Grep by specifying keywords, but what if you want to do this for multiple spec files?
+You don't want to enter 'Smoke' in every test case
+
+In the case where you want an entire spec file (i think this is a describe() block) to run, 
+another way of doing it is by using the `suites` parameter in the wdio.conf.js file
+
+Wdio.conf.js:
+suites: {
+	debitCard: ['test/specs/uiControls.js', 'test/specs/windowsFrames.js'],
+	creditCard: ['test/specs/eCommerceE2E.js']
+}
+
+
+Run Command (see package.json):
+- Full command: npx wdio run wdio.conf.js --suite debitCard
+- You can add it to your package.json scripts also:
+    "scripts": {
+      "suite": "wdio run ./wdio.conf.js --suite creditCard"
+    },
